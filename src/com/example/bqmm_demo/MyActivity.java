@@ -113,7 +113,7 @@ public class MyActivity extends FragmentActivity {
 		 */
         bqmmsdk.setBqmmSendMsgListener(new IBqmmSendMessageListener() {
             /**
-             * 单个动态表情
+             * 单个大表情消息
              */
             @Override
             public void onSendFace(final Emoji face) {
@@ -123,7 +123,9 @@ public class MyActivity extends FragmentActivity {
                 datas.add(message);
                 adapter.refresh(datas);
 
-                //模拟IM，1秒后添加接收消息，消息实体:表情Code
+                /**
+                 * 1秒后增加一条和发出的这条相同的消息，模拟对话
+                 */
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         Message getmessage = new Message(Message.MSG_TYPE_FACE,
@@ -136,7 +138,7 @@ public class MyActivity extends FragmentActivity {
             }
 
             /**
-             * 富文本表情
+             * 图文混排消息
              */
             @Override
             public void onSendMixedMessage(List<Object> emojis, boolean isMixedMessage) {
@@ -147,7 +149,9 @@ public class MyActivity extends FragmentActivity {
                 datas.add(message);
                 adapter.refresh(datas);
 
-                //模拟IM，1秒后添加接收消息，消息实体:表情Code及文本字符串
+                /**
+                 * 1秒后增加一条和发出的这条相同的消息，模拟对话
+                 */
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         Message getmessage = new Message(Message.MSG_TYPE_TEXT,
