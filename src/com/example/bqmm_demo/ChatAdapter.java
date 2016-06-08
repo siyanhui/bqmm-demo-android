@@ -93,6 +93,7 @@ public class ChatAdapter extends BaseAdapter {
         holder.tv_date.setVisibility(View.VISIBLE);
         // 如果是文本类型，则隐藏图片，如果是图片则隐藏文本
         if (data.getType() == Message.MSG_TYPE_TEXT) {
+            holder.message.loadDefaultTextView();
             showTextInfoFromStr(holder.message, data.getContent());
         } else {
             holder.message.loadDefaultFaceView();
