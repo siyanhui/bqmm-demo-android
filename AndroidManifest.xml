@@ -25,6 +25,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
+        <!--BQMM集成-->
         <!--以下两条metadata的值都是占位符，具体的值是在build.gradle中设置的。如果项目没有使用Android Studio，请把占位符改成实际的ID和Secret-->
         <meta-data
             android:name="bqmm_app_id"
@@ -33,6 +34,8 @@
             android:name="bqmm_app_secret"
             android:value="${bqmmAppSecret}" />
 
+        <!--BQMM集成-->
+        <!--以下是BQMM包含的Activity-->
         <activity
             android:name="com.example.bqmm_demo.SplashActivity"
             android:label="@string/app_name">

@@ -8,6 +8,12 @@
     <color name="bqmm_titlebar_bg">#ff2e2e2e</color>
     <!-- 商店标题栏字体颜色 -->
     <color name="bqmm_titletext_tc">#ffffffff</color>
+    
+    <!-- 我的表情页面排序按钮字体颜色 -->
+    <color name="bqmm_sort_button_color">#ffffffff</color>
+    <!-- 排序页面排序完成按钮字体颜色 -->
+    <color name="bqmm_sort_finish_button_color">#ff36cab6</color>
+    
     <!-- 商店下载按钮字体颜色      下载前 -->
 	<color name="bqmm_download_button_text_color_download">#ff36cab6</color>
 	<!-- 商店下载按钮字体颜色      下载后 -->

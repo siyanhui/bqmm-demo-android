@@ -16,5 +16,21 @@
     <string name="bqmm_refresh_button_text">点击刷新</string>
     <!-- 单表情详情页表情包加载失败提示内容 -->
     <string name="bqmm_failed_get_package_text">获取表情包信息失败</string>
+    <!-- 删除表情时提示语 -->
+    <string name="bqmm_delete_package_text">删除中...</string>
 
+
+
+    <!-- 商店页面加载失败提示内容 -->
+    <string name="bqmm_shop_network_error_text_en">Loading failed, please check your network and connect later</string>
+    <!-- 表情键盘初始化失败提示内容 -->
+    <string name="bqmm_keyboard_network_error_text_en">Initialize failed, please check your network and connect later</string>
+    <!-- 重新加载按钮的内容 -->
+    <string name="bqmm_reload_button_text_en">Reload</string>
+    <!-- 点击刷新按钮的内容 -->
+    <string name="bqmm_refresh_button_text_en">Try Again</string>
+    <!-- 单表情详情页表情包加载失败提示内容 -->
+    <string name="bqmm_failed_get_package_text_en">Failed to get sticker pack</string>
+    <!-- 删除表情时提示语 -->
+    <string name="bqmm_delete_package_text_en">deleting...</string>
 </resources>

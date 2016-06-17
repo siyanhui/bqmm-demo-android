@@ -12,6 +12,7 @@ public class DemoApplication extends Application {
         super.onCreate();
 
         /**
+         * BQMM集成
          * 首先从AndroidManifest.xml中取得appId和appSecret，然后对BQMM SDK进行初始化
          */
         try {

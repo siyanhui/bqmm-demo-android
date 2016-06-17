@@ -37,14 +37,16 @@ public class MyActivity extends FragmentActivity {
     private ChatAdapter adapter;
     private View inputbox;
     /*
-     * 集成相关
+     * BQMM集成
+     * 相关变量
      */
     private BQMMSendButton bqmmSend;
     private CheckBox bqmmKeyboardOpen;
     private BQMMEditView bqmmEditView;
     private BQMM bqmmsdk;
 
-    /*
+    /**
+     * BQMM集成
      * 键盘切换相关
      */
     private Rect tmp = new Rect();
@@ -71,8 +73,9 @@ public class MyActivity extends FragmentActivity {
         bqmmKeyboardOpen = (CheckBox) findViewById(R.id.chatbox_open);
         bqmmEditView = (BQMMEditView) findViewById(R.id.chatbox_message);
         bqmmEditView.requestFocus();
-        /*
-         * 初始化SDK
+        /**
+         * BQMM集成
+         * 加载SDK
 		 */
         bqmmsdk = BQMM.getInstance();
         // 初始化表情MM键盘，需要传入关联的EditView,SendBtn
@@ -92,6 +95,7 @@ public class MyActivity extends FragmentActivity {
             }
         });
         /**
+         * BQMM集成
          * 实现输入联想
          */
         bqmmEditView.addTextChangedListener(new TextWatcher() {
@@ -108,8 +112,9 @@ public class MyActivity extends FragmentActivity {
             public void afterTextChanged(Editable s) {
             }
         });
-        /*
-         * 设置表情的消息回调
+        /**
+         * BQMM集成
+         * 设置发送消息的回调
 		 */
         bqmmsdk.setBqmmSendMsgListener(new IBqmmSendMessageListener() {
             /**

@@ -7,7 +7,8 @@
 
     <!-- 商店标题字号 -->
     <dimen name="bqmm_title_text_size">19sp</dimen>
-
+    <!-- 我的表情排序按钮和完成按钮字体大小 -->
+	<dimen name="bqmm_sort_button_text_size">20sp</dimen>
     <!-- 页面加载失败提示内容字体大小 -->
     <dimen name="bqmm_shop_network_error_text_size">18sp</dimen>
     <!-- 键盘初始化失败提示内容字体大小 -->

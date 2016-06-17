@@ -2,6 +2,8 @@ package com.example.bqmm_demo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,9 +91,13 @@ public class ChatAdapter extends BaseAdapter {
             holder = (ViewHolder) v.getTag();
         }
         holder.tv_date.setText(StringUtils.friendlyTime(StringUtils
-                .getDataTime("yyyy-MM-dd " + "HH:mm:ss")));
+                .getDateTime("yyyy-MM-dd " + "HH:mm:ss")));
         holder.tv_date.setVisibility(View.VISIBLE);
-        // 如果是文本类型，则隐藏图片，如果是图片则隐藏文本
+        /**
+         * BQMM集成
+         * 根据消息类型，用正确的方式展示消息
+         * 如果是文本类型，则隐藏图片，如果是图片则隐藏文本
+         */
         if (data.getType() == Message.MSG_TYPE_TEXT) {
             holder.message.loadDefaultTextView();
             showTextInfoFromStr(holder.message, data.getContent());
@@ -101,8 +107,13 @@ public class ChatAdapter extends BaseAdapter {
             codes.add(data.getContent());
             BQMM.getInstance().fetchBigEmojiByCodeList(context, codes, new IFetchEmojisByCodeListCallback() {
                 @Override
-                public void onSuccess(List<Emoji> emojis) {
-                    holder.message.showFaceMessage(emojis);
+                public void onSuccess(final List<Emoji> emojis) {
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            holder.message.showFaceMessage(emojis);
+                        }
+                    });
                 }
 
                 @Override
