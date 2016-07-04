@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical">
-
     <ListView
         android:id="@+id/chat_listview"
         android:layout_width="match_parent"
@@ -31,8 +30,9 @@
         android:padding="4dp">
 
         <com.melink.bqmmsdk.widget.BQMMSendButton
+            android:background="@drawable/bqmm_sendbutton_bg_selector"
             android:id="@+id/chatbox_send"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="bottom"

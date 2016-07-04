@@ -80,7 +80,9 @@
 	<color name="bqmm_preload_button_border_color">#ffffffff</color>
 	<!-- 默认大表情下载进度条颜色 -->
 	<color name="bqmm_preload_button_progress_color">#ff36cab6</color>
+	<!-- 默认大表情下载进度条背景颜色 -->
+	<color name="bqmm_preload_button_progress_background_color">#00000000</color>
 	<!-- 默认大表情下载按钮背景颜色 -->
-	<color name="bqmm_preload_button_background_color">#00000000</color>
+	<color name="bqmm_preload_button_background_color">#ff36cab6</color>
 	
 </resources>
