@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.melink.bqmmsdk.sdk.BQMM;
+import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 
 public class DemoApplication extends Application {
@@ -23,5 +24,6 @@ public class DemoApplication extends Application {
             e.printStackTrace();
         }
         CrashReport.initCrashReport(getApplicationContext());
+        LeakCanary.install(this);
     }
 }
