@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.github.moduth.blockcanary.BlockCanary;
 import com.melink.bqmmsdk.sdk.BQMM;
+import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 
 public class DemoApplication extends Application {
@@ -25,5 +26,6 @@ public class DemoApplication extends Application {
         }
         BlockCanary.install(this, new AppBlockCanaryContext()).start();
         CrashReport.initCrashReport(getApplicationContext());
+        LeakCanary.install(this);
     }
 }
