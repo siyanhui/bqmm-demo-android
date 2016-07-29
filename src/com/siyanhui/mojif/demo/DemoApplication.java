@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import com.github.moduth.blockcanary.BlockCanary;
 import com.melink.bqmmsdk.sdk.BQMM;
 import com.tencent.bugly.crashreport.CrashReport;
 
@@ -22,6 +23,7 @@ public class DemoApplication extends Application {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+        BlockCanary.install(this, new AppBlockCanaryContext()).start();
         CrashReport.initCrashReport(getApplicationContext());
     }
 }
