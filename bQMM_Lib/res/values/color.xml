@@ -28,7 +28,25 @@
 	<color name="bqmm_download_button_background_color_download">#ffffffff</color>
 	<!-- 商店下载按钮背景颜色      下载后 -->
 	<color name="bqmm_download_button_background_color_downloaded">#ffffffff</color>
-	
+	<!-- 商店下载按钮进度条颜色 -->
+	<color name="bqmm_download_button_progress_color">#ff36cab6</color>
+	<!-- 商店下载按钮进度条背景颜色 -->
+	<color name="bqmm_download_button_progress_background_color">#00000000</color>
+
+	<!-- 表情包详情页面下载按钮进度条颜色 -->
+	<color name="bqmm_emoji_package_detail_download_button_progress_color">#ff36cab6</color>
+	<!-- 表情包详情页面下载按钮进度条背景颜色 -->
+	<color name="bqmm_emoji_package_detail_download_button_progress_background_color">#00000000</color>
+
+	<!-- 表情详情页面下载按钮进度条颜色 -->
+	<color name="bqmm_emoji_detail_download_button_progress_color">#ff36cab6</color>
+	<!-- 表情详情页面下载按钮进度条背景颜色 -->
+	<color name="bqmm_emoji_detail_download_button_progress_background_color">#00000000</color>
+
+	<!-- 推荐位下载按钮进度条颜色 -->
+	<color name="bqmm_recommend_download_button_progress_color">#ff36cab6</color>
+	<!-- 推荐位下载按钮进度条背景颜色 -->
+	<color name="bqmm_recommend_download_button_progress_background_color">#00000000</color>
 	
 	<!-- 商店移除按钮字体颜色 -->
 	<color name="bqmm_delete_button_text_color">#ffe98182</color>
@@ -60,7 +78,7 @@
 	<!-- 底部tab栏背景颜色 -->
 	<color name="bqmm_tab_background_color">#ffffffff</color>
 	<!-- 表情键盘背景颜色 -->
-	<color name="bqmm_keyboard_background_color">#22bcbcbc</color>
+	<color name="bqmm_keyboard_background_color">#fff6f6f6</color>
 	
 	<!-- 表情键盘商店按钮图案颜色 -->
 	<color name="bqmm_keyboard_shop_button_color">#ffffffff</color>

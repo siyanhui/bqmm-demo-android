@@ -65,10 +65,7 @@ android {
 }
 
 dependencies {
-    compile 'com.github.moduth:blockcanary-android:1.2.1'
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile project(':bQMM_Lib')
-    compile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
-
 }
