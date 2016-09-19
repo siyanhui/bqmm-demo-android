@@ -78,8 +78,8 @@ public class ChatAdapter extends BaseAdapter {
                     .findViewById(R.id.chat_item_progress);
             holder.tv_date = (TextView) v.findViewById(R.id.chat_item_date);
             holder.message = (BQMMMessageText) v.findViewById(R.id.chat_item_content);
-            holder.message.setBigEmojiShowSize(DensityUtils.dip2px(context,100));
-            holder.message.setSmallEmojiShowSize(DensityUtils.dip2px(context,20));
+            holder.message.setBigEmojiShowSize(DensityUtils.dip2px(100));
+            holder.message.setSmallEmojiShowSize(DensityUtils.dip2px(20));
             v.setTag(holder);
         } else {
             holder = (ViewHolder) v.getTag();

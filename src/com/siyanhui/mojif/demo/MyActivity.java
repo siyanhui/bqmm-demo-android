@@ -48,7 +48,6 @@ public class MyActivity extends FragmentActivity {
     private CheckBox bqmmKeyboardOpen;
     private BQMMEditView bqmmEditView;
     private BQMM bqmmsdk;
-
     /**
      * BQMM集成
      * 键盘切换相关
@@ -117,7 +116,7 @@ public class MyActivity extends FragmentActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                BQMM.getInstance().startShortcutPopupWindowByoffset(MyActivity.this, s.toString(), bqmmSend,0,DensityUtils.dip2px(MyActivity.this,4));
+                BQMM.getInstance().startShortcutPopupWindowByoffset(MyActivity.this, s.toString(), bqmmSend,0, DensityUtils.dip2px(4));
             }
 
             @Override
