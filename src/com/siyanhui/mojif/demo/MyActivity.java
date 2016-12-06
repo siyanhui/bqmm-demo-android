@@ -40,7 +40,7 @@ public class MyActivity extends FragmentActivity {
     List<Message> datas = new ArrayList<>();
     private ChatAdapter adapter;
     private View inputbox;
-    /*
+    /**
      * BQMM集成
      * 相关变量
      */
@@ -80,7 +80,7 @@ public class MyActivity extends FragmentActivity {
         /**
          * BQMM集成
          * 加载SDK
-		 */
+         */
         bqmmsdk = BQMM.getInstance();
         // 初始化表情MM键盘，需要传入关联的EditView,SendBtn
         bqmmsdk.setEditView(bqmmEditView);
@@ -94,9 +94,9 @@ public class MyActivity extends FragmentActivity {
             }
         });
         bqmmsdk.load();
-        /*
+        /**
          * 默认方式打开软键盘时切换表情符号的状态
-		 */
+         */
         bqmmEditView.setOnTouchListener(new View.OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override
@@ -116,7 +116,7 @@ public class MyActivity extends FragmentActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                BQMM.getInstance().startShortcutPopupWindowByoffset(MyActivity.this, s.toString(), bqmmSend,0, DensityUtils.dip2px(4));
+                BQMM.getInstance().startShortcutPopupWindowByoffset(s.toString(), bqmmSend, 0, DensityUtils.dip2px(4));
             }
 
             @Override
@@ -126,7 +126,7 @@ public class MyActivity extends FragmentActivity {
         /**
          * BQMM集成
          * 设置发送消息的回调
-		 */
+         */
         bqmmsdk.setBqmmSendMsgListener(new IBqmmSendMessageListener() {
             /**
              * 单个大表情消息
@@ -158,25 +158,25 @@ public class MyActivity extends FragmentActivity {
              */
             @Override
             public void onSendMixedMessage(List<Object> emojis, boolean isMixedMessage) {
-                    final JSONArray msgCodes = BQMMMessageHelper.getMixedMessageData(emojis);
-                    Message message = new Message(Message.MSG_TYPE_MIXTURE,
-                            Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry",
-                            "avatar", msgCodes, true, true, new Date());
-                    datas.add(message);
-                    adapter.refresh(datas);
+                final JSONArray msgCodes = BQMMMessageHelper.getMixedMessageData(emojis);
+                Message message = new Message(Message.MSG_TYPE_MIXTURE,
+                        Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry",
+                        "avatar", msgCodes, true, true, new Date());
+                datas.add(message);
+                adapter.refresh(datas);
 
-                    /**
-                     * 1秒后增加一条和发出的这条相同的消息，模拟对话
-                     */
-                    new Handler().postDelayed(new Runnable() {
-                        public void run() {
-                            Message getmessage = new Message(Message.MSG_TYPE_MIXTURE,
-                                    Message.MSG_STATE_SUCCESS, "Jerry", "avatar", "Tom",
-                                    "avatar", msgCodes, false, true, new Date());
-                            datas.add(getmessage);
-                            adapter.refresh(datas);
-                        }
-                    }, 1000);
+                /**
+                 * 1秒后增加一条和发出的这条相同的消息，模拟对话
+                 */
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        Message getmessage = new Message(Message.MSG_TYPE_MIXTURE,
+                                Message.MSG_STATE_SUCCESS, "Jerry", "avatar", "Tom",
+                                "avatar", msgCodes, false, true, new Date());
+                        datas.add(getmessage);
+                        adapter.refresh(datas);
+                    }
+                }, 1000);
 
 
             }
@@ -184,16 +184,6 @@ public class MyActivity extends FragmentActivity {
         initMessageInputToolBox();
         initListView();
 
-//        /**
-//         * 设置键盘的默认高度
-//         */
-//        int defaultHeight = DensityUtils.dip2px(this, 250);
-//        int height = getPreferences(MODE_PRIVATE).getInt(LAST_KEYBOARD_HEIGHT, defaultHeight);
-//        ViewGroup.LayoutParams params = bqmmKeyboard.getLayoutParams();
-//        if (params != null) {
-//            params.height = height;
-//            bqmmKeyboard.setLayoutParams(params);
-//        }
         /**
          * 表情键盘切换监听
          */
@@ -321,11 +311,11 @@ public class MyActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         // 关闭SDK
-        bqmmsdk.destory();
+        bqmmsdk.destroy();
         super.onDestroy();
     }
 
-    /*
+    /**
      * 初始化列表信息以及表情键盘的监听
      */
     private void initMessageInputToolBox() {
