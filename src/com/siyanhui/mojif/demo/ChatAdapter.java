@@ -80,6 +80,7 @@ public class ChatAdapter extends BaseAdapter {
             holder.message = (BQMMMessageText) v.findViewById(R.id.chat_item_content);
             holder.message.setStickerSize(DensityUtils.dip2px(100));
             holder.message.setEmojiSize(DensityUtils.dip2px(20));
+            holder.message.setUnicodeEmojiSpanSizeRatio(1.5f);//让emoji显示得比一般字符大一点
             v.setTag(holder);
         } else {
             holder = (ViewHolder) v.getTag();
@@ -88,11 +89,11 @@ public class ChatAdapter extends BaseAdapter {
                 .getDateTime("yyyy-MM-dd " + "HH:mm:ss")));
         holder.tv_date.setVisibility(View.VISIBLE);
 
-        if (data.getType()==Message.MSG_TYPE_FACE) {//大表情
-            holder.message.showMessage(BQMMMessageHelper.getMsgCodeString(data.getContentArray()), BQMMMessageText.FACETYPE,data.getContentArray());
+        if (data.getType() == Message.MSG_TYPE_FACE) {//大表情
+            holder.message.showMessage(BQMMMessageHelper.getMsgCodeString(data.getContentArray()), BQMMMessageText.FACETYPE, data.getContentArray());
             holder.message.getBackground().setAlpha(0);
         } else {//小表情或文字或图文混排
-            holder.message.showMessage(BQMMMessageHelper.getMsgCodeString(data.getContentArray()),BQMMMessageText.EMOJITYPE,data.getContentArray());
+            holder.message.showMessage(BQMMMessageHelper.getMsgCodeString(data.getContentArray()), BQMMMessageText.EMOJITYPE, data.getContentArray());
             holder.message.getBackground().setAlpha(255);
         }
         // 消息发送的状态

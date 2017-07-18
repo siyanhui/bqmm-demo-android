@@ -75,6 +75,7 @@ public class MyActivity extends FragmentActivity {
         bqmmSend = (BQMMSendButton) findViewById(R.id.chatbox_send);
         bqmmKeyboardOpen = (CheckBox) findViewById(R.id.chatbox_open);
         bqmmEditView = (BQMMEditView) findViewById(R.id.chatbox_message);
+        bqmmEditView.setUnicodeEmojiSpanSizeRatio(1.5f);//让emoji显示得比一般字符大一点
         bqmmEditView.requestFocus();
 
         /**
