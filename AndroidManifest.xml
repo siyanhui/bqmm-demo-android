@@ -79,7 +79,7 @@
             android:value="41e0005ddb"/>
         <meta-data
             android:name="BUGLY_APP_VERSION"
-            android:value="1.7.12"/>
+            android:value="1.7.15"/>
         <meta-data
             android:name="BUGLY_APP_CHANNEL"
             android:value="alpha"/>
