@@ -19,14 +19,18 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.melink.baseframe.utils.DensityUtils;
+import com.melink.bqmmsdk.bean.BQMMGif;
 import com.melink.bqmmsdk.bean.Emoji;
 import com.melink.bqmmsdk.sdk.BQMM;
 import com.melink.bqmmsdk.sdk.BQMMMessageHelper;
 import com.melink.bqmmsdk.sdk.IBqmmSendMessageListener;
 import com.melink.bqmmsdk.ui.keyboard.BQMMKeyboard;
 import com.melink.bqmmsdk.ui.keyboard.IBQMMUnicodeEmojiProvider;
+import com.melink.bqmmsdk.ui.keyboard.IGifButtonClickListener;
 import com.melink.bqmmsdk.widget.BQMMEditView;
 import com.melink.bqmmsdk.widget.BQMMSendButton;
+import com.siyanhui.mojif.demo.bqmmgif.BQMMGifManager;
+import com.siyanhui.mojif.demo.bqmmgif.IBqmmSendGifListener;
 
 import org.json.JSONArray;
 
@@ -85,7 +89,20 @@ public class MyActivity extends FragmentActivity {
         bqmmsdk = BQMM.getInstance();
         // 初始化表情MM键盘，需要传入关联的EditView,SendBtn
         bqmmsdk.setEditView(bqmmEditView);
-        bqmmsdk.setKeyboard(bqmmKeyboard);
+        bqmmsdk.setKeyboard(bqmmKeyboard, new IGifButtonClickListener() {
+            @Override
+            public void didClickGifTab() {
+                closebroad();
+                bqmmEditView.requestFocus();
+                showSoftInput(bqmmEditView);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        BQMMGifManager.getInstance(bqmmKeyboard.getContext()).showTrending();
+                    }
+                }, 300);
+            }
+        });
         bqmmsdk.setSendButton(bqmmSend);
         UnicodeToEmoji.initPhotos(this);
         bqmmsdk.setUnicodeEmojiProvider(new IBQMMUnicodeEmojiProvider() {
@@ -95,6 +112,7 @@ public class MyActivity extends FragmentActivity {
             }
         });
         bqmmsdk.load();
+        BQMMGifManager.getInstance(this).addEditViewListeners();
         /**
          * 默认方式打开软键盘时切换表情符号的状态
          */
@@ -106,24 +124,7 @@ public class MyActivity extends FragmentActivity {
                 return false;
             }
         });
-        /**
-         * BQMM集成
-         * 实现输入联想
-         */
-        bqmmEditView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                BQMM.getInstance().startShortcutPopupWindowByoffset(s.toString(), bqmmSend, 0, DensityUtils.dip2px(4));
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
         /**
          * BQMM集成
          * 设置发送消息的回调
@@ -182,6 +183,31 @@ public class MyActivity extends FragmentActivity {
 
             }
         });
+        BQMMGifManager.getInstance(getBaseContext()).setBQMMSendGifListener(new IBqmmSendGifListener() {
+            @Override
+            public void onSendBQMMGif(final BQMMGif bqmmGif) {
+                Message message = new Message(Message.MSG_TYPE_WEBSTICKER,
+                        Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry",
+                        "avatar", null, true, true, new Date());
+                message.setBqssWebSticker(bqmmGif);
+                datas.add(message);
+                adapter.refresh(datas);
+
+                /**
+                 * 1秒后增加一条和发出的这条相同的消息，模拟对话
+                 */
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        Message message = new Message(Message.MSG_TYPE_WEBSTICKER,
+                                Message.MSG_STATE_SUCCESS, "Jerry", "avatar", "Tom",
+                                "avatar", null, false, true, new Date());
+                        message.setBqssWebSticker(bqmmGif);
+                        datas.add(message);
+                        adapter.refresh(datas);
+                    }
+                }, 1000);
+            }
+        });
         initMessageInputToolBox();
         initListView();
 
@@ -220,6 +246,7 @@ public class MyActivity extends FragmentActivity {
                 return true;
             }
         });
+
         //切换开关
         bqmmKeyboardOpen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -347,13 +374,16 @@ public class MyActivity extends FragmentActivity {
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && (isBqmmKeyboardVisible() || isKeyboardVisible())) {
-            closebroad();
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((isBqmmKeyboardVisible() || isKeyboardVisible())) {
+                closebroad();
+            }
             return true;
         } else {
             return super.onKeyDown(keyCode, event);
         }
     }
+
 
     /**
      * 若软键盘或表情键盘弹起，点击上端空白处应该隐藏输入法键盘

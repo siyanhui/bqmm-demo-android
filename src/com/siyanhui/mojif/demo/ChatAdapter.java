@@ -92,6 +92,9 @@ public class ChatAdapter extends BaseAdapter {
         if (data.getType() == Message.MSG_TYPE_FACE) {//大表情
             holder.message.showMessage(BQMMMessageHelper.getMsgCodeString(data.getContentArray()), BQMMMessageText.FACETYPE, data.getContentArray());
             holder.message.getBackground().setAlpha(0);
+        } else if (data.getType() == Message.MSG_TYPE_WEBSTICKER) {
+            holder.message.showBQMMGif(data.getBqssWebSticker().getSticker_id(), data.getBqssWebSticker().getSticker_url(), data.getBqssWebSticker().getSticker_width(), data.getBqssWebSticker().getSticker_height(), data.getBqssWebSticker().getIs_gif());
+            holder.message.getBackground().setAlpha(0);
         } else {//小表情或文字或图文混排
             holder.message.showMessage(BQMMMessageHelper.getMsgCodeString(data.getContentArray()), BQMMMessageText.EMOJITYPE, data.getContentArray());
             holder.message.getBackground().setAlpha(255);

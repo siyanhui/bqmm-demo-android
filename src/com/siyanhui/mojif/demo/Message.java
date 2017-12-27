@@ -1,5 +1,6 @@
 package com.siyanhui.mojif.demo;
 
+import com.melink.bqmmsdk.bean.BQMMGif;
 import com.melink.bqmmsdk.bean.Emoji;
 
 import org.json.JSONArray;
@@ -13,6 +14,7 @@ import java.util.List;
 public class Message {
     public final static int MSG_TYPE_FACE = 1;
     public final static int MSG_TYPE_MIXTURE = 2;
+    public final static int MSG_TYPE_WEBSTICKER = 3;
 
     public final static int MSG_STATE_SENDING = 3;
     public final static int MSG_STATE_SUCCESS = 1;
@@ -31,10 +33,12 @@ public class Message {
     private Date time;
     private Emoji emoji;
     private List<Object> emojis;//默认表情图文混排消息
+    private BQMMGif mBQMMGif;
 
     private JSONArray contentArray;
+
     public Message(int type, int state, String fromUserName,
-                   String fromUserAvatar, String toUserName, String toUserAvatar, JSONArray jsonArray, Boolean isSend, Boolean sendSucces,Date time) {
+                   String fromUserAvatar, String toUserName, String toUserAvatar, JSONArray jsonArray, Boolean isSend, Boolean sendSucces, Date time) {
         super();
         this.type = type;
         this.state = state;
@@ -47,6 +51,7 @@ public class Message {
         this.time = time;
         this.contentArray = jsonArray;
     }
+
     public Long getId() {
         return id;
     }
@@ -150,6 +155,13 @@ public class Message {
 
     public void setContentArray(JSONArray contentArray) {
         this.contentArray = contentArray;
+    }
+    public BQMMGif getBqssWebSticker() {
+        return mBQMMGif;
+    }
+
+    public void setBqssWebSticker(BQMMGif bqmmGif) {
+        this.mBQMMGif = bqmmGif;
     }
 
 }
