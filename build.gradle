@@ -4,7 +4,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.1.2'
     }
 }
 apply plugin: 'com.android.application'
@@ -26,36 +26,13 @@ android {
     repositories {
         jcenter()
     }
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     packagingOptions {
         exclude 'META-INF/ASL2.0'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
-    }
-
-    sourceSets {
-        main {
-            manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src']
-            resources.srcDirs = ['src']
-            aidl.srcDirs = ['src']
-            renderscript.srcDirs = ['src']
-            res.srcDirs = ['res']
-        }
-
-        // Move the tests to tests/java, tests/res, etc...
-        instrumentTest.setRoot('tests')
-
-        // Move the build types to build-types/<type>
-        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
-        // This moves them out of them default location under src/<type>/... which would
-        // conflict with src/ being used by the main source set.
-        // Adding new build types or product flavors should be accompanied
-        // by a similar customization.
-        debug.setRoot('build-types/debug')
-        release.setRoot('build-types/release')
     }
     defaultConfig {
         /**
@@ -66,11 +43,13 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:25.4.0'
-    implementation 'com.android.support:recyclerview-v7:25.4.0'
-    compile 'com.tencent.bugly:crashreport:latest.release'
-    compile project(':bQMM_Lib')
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.tencent.bugly:crashreport:2.6.6.1'
+    implementation project(':BQMM_Lib')
 }
-repositories {
-    google()
+allprojects {
+    repositories {
+        google()
+    }
 }
